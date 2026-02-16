@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Você, Meu Amor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+        :root { --cor-principal: #b33939; --cor-fundo: #fdf2f2; }
+
+        body {
+            background-color: var(--cor-fundo); color: #333;
+            font-family: 'Lora', serif; margin: 0; padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed; width: 100%; height: 100%; background: white;
+            display: flex; justify-content: center; align-items: center; z-index: 9999;
+        }
+        .heart-loader { font-size: 50px; animation: pulse 1s infinite; color: var(--cor-principal); }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+
+        /* Background Hearts */
+        .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+
+        /* Music Player Floating */
+        .music-control {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+            background: white; padding: 10px; border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer;
+            display: flex; align-items: center; gap: 8px; border: 2px solid var(--cor-principal);
+        }
+
+        .carta {
+            max-width: 700px; background: rgba(255, 255, 255, 0.96);
+            margin: 40px auto; padding: 40px; border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05); animation: fadeIn 2.5s ease;
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; color: var(--cor-principal); font-size: 3em; text-align: center; }
+
+        .img-wrap { margin: 25px 0; text-align: center; cursor: zoom-in; }
+        img { 
+            max-width: 100%; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: 0.3s; 
+        }
+        img:hover { transform: translateY(-5px); }
+
+        .galeria-dupla { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
+
+        p { line-height: 1.8; font-size: 1.15em; text-align: justify; margin-bottom: 20px; }
+
+        /* Counter Section */
+        .contador-box {
+            background: #fffafa; border: 2px dashed #f2d7d7;
+            padding: 25px; border-radius: 15px; margin: 40px 0; text-align: center;
+        }
+        #tempo { font-weight: bold; font-size: 1.2em; color: #555; }
+
+        /* Gran Finale Button */
+        #btnSurpresa {
+            background: var(--cor-principal); color: white; border: none; 
+            padding: 15px 30px; font-family: 'Dancing Script', cursive; 
+            font-size: 1.5em; border-radius: 50px; cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(179, 57, 57, 0.3); transition: 0.3s;
+        }
+        #btnSurpresa:hover { transform: scale(1.05); background: #d63031; }
+
+        .assinatura {
+            text-align: center; font-family: 'Dancing Script', cursive;
+            font-size: 2.5em; color: var(--cor-principal);
+            border-top: 1px solid #f2d7d7; padding-top: 30px; margin-top: 40px;
+        }
+
+        /* Lightbox for Photos */
+        #lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none; justify-content: center;
+            align-items: center; z-index: 2000; cursor: zoom-out;
+        }
+        #lightbox img { max-width: 90%; max-height: 90%; border: 5px solid white; border-radius: 5px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 600px) {
+            .carta { padding: 25px; margin: 20px 10px; }
+            .galeria-dupla { grid-template-columns: 1fr; }
+            h1 { font-size: 2.3em; }
+        }
+    </style>
+</head>
+<body onload="document.getElementById('loader').style.display='none'">
+
+    <div id="loader"><div class="heart-loader">❤️</div></div>
+
+    <div class="hearts" id="heartContainer"></div>
+
+    <iframe id="youtube-player" style="display:none" 
+            src="https://www.youtube.com/embed/WmEHXzcYMcc?enablejsapi=1" 
+            allow="autoplay"></iframe>
+
+    <div class="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+        <small id="music-text">Clique para ouvir a trilha sonora</small>
+    </div>
+
+    <div class="carta">
+        <div class="img-wrap" onclick="openLightbox(this)">
+            <img src="https://i.ibb.co/7JcxnCP7/Whats-App-Image-2026-02-16-at-19-53-06-2.jpg" alt="Foto Capa">
+        </div>
+
+        <h1>Para você...</h1>
+
+        <p>Sabe, às vezes eu me pego aqui no silêncio do quarto, com a luz meio baixa e o pensamento longe... e não adianta, ele sempre termina em você. É como se meu coração tivesse um GPS que só sabe marcar o caminho de volta pro teu abraço.</p>
+
+        <div class="galeria-dupla">
+            <div class="img-wrap" onclick="openLightbox(this)"><img src="https://i.ibb.co/W49Y80LN/Whats-App-Image-2026-02-16-at-19-53-06.jpg"></div>
+            <div class="img-wrap" onclick="openLightbox(this)"><img src="https://i.ibb.co/8gSCzZxx/Whats-App-Image-2026-02-16-at-19-53-06-1.jpg"></div>
+        </div>
+
+        <p>Eu fico aqui, olhando pro teto ou pra janela aberta, e percebo que o mundo lá fora pode estar fazendo o barulho que for, mas nada disso importa se eu não tiver a paz que só o seu sorriso me traz. Já tentei de tudo pra me distrair. Já vi todos os filmes, comecei séries novas, li páginas e páginas de livros... mas parece que tudo o que eu consumo me faz lembrar de algum detalhe nosso.</p>
+
+        <div class="img-wrap" onclick="openLightbox(this)">
+            <img src="https://i.ibb.co/1N2z7Y6/Whats-App-Image-2026-02-16-at-20-01-07-1.jpg">
+        </div>
+
+        <p>É uma conexão que não envelhece, não cansa e não diminui. Pelo contrário, parece que quanto mais o tempo passa, mais eu entendo que você não é só uma escolha, você é a minha melhor decisão todos os dias.</p>
+
+        <div class="contador-box">
+            <div style="font-family: 'Dancing Script'; font-size: 1.6em; color: var(--cor-principal);">Nossa felicidade em tempo real:</div>
+            <div id="tempo">Calculando momentos...</div>
+        </div>
+
+        <p>Para você, meu amor, eu entrego o meu melhor. Porque no fim das contas, a gente entende que a vida é feita de momentos, e os meus melhores momentos são todos ao seu lado. O mundo pode ser enorme e cheio de gente, mas pra mim, o resto? O resto tanto faz. O que é essencial, o que é real e o que me faz feliz, eu já tenho.</p>
+
+        <div class="img-wrap" onclick="openLightbox(this)">
+            <img src="https://i.ibb.co/pjczZSHF/Whats-App-Image-2026-02-16-at-19-53-05.jpg">
+        </div>
+
+        <div style="text-align: center; margin: 50px 0;">
+            <button id="btnSurpresa" onclick="revelarSurpresa()">
+                Clique para um último segredo...
+            </button>
+            
+            <div id="textoFinal" style="display: none; margin-top: 30px; animation: fadeIn 2s ease;">
+                <p style="font-style: italic; color: var(--cor-principal); font-size: 1.4em; text-align: center; font-weight: bold;">
+                    "Escolhi e te escolheria mil vezes, todos os dias, em todas as vidas. Você é a minha certeza mais bonita, e eu sou eternamente grato por ter o privilégio de te amar." ❤️🫀
+                </p>
+            </div>
+        </div>
+
+        <div class="assinatura">Eu amo você, hoje e sempre. ❤️🔒</div>
+    </div>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Data de Início: 17/06/2025
+        const dataInic = new Date(2025, 5, 17); // Junho é 5 no JS
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diff = agora - dataInic;
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff / 3600000) % 24);
+            const m = Math.floor((diff / 60000) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+            document.getElementById('tempo').innerHTML = `${d} dias, ${h}h, ${m}m e ${s}s`;
+        }
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+
+        // Controle da Música
+        let playing = false;
+        function toggleMusic() {
+            const player = document.getElementById('youtube-player').contentWindow;
+            if(!playing) {
+                player.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                document.getElementById('music-text').innerText = "Tocando: Delacruz - Andressa";
+                document.getElementById('music-icon').innerText = "⏸️";
+            } else {
+                player.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                document.getElementById('music-text').innerText = "Música pausada";
+                document.getElementById('music-icon').innerText = "🎵";
+            }
+            playing = !playing;
+        }
+
+        // Lightbox para fotos
+        function openLightbox(el) {
+            const lb = document.getElementById('lightbox');
+            document.getElementById('lightbox-img').src = el.querySelector('img').src;
+            lb.style.display = 'flex';
+        }
+
+        // Efeito de Gran Finale
+        function revelarSurpresa() {
+            document.getElementById('btnSurpresa').style.display = 'none';
+            document.getElementById('textoFinal').style.display = 'block';
+            
+            var end = Date.now() + (3 * 1000);
+            (function frame() {
+              confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#b33939', '#ffb6c1'] });
+              confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#b33939', '#ffb6c1'] });
+              if (Date.now() < end) { requestAnimationFrame(frame); }
+            }());
+        }
+
+        // Chuva de Corações ao fundo
+        function createHeart() {
+            const h = document.createElement('div');
+            h.innerHTML = '❤️';
+            h.style.position = 'fixed';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.top = '-20px';
+            h.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            h.style.opacity = Math.random();
+            h.style.zIndex = '-1';
+            h.style.pointerEvents = 'none';
+            document.body.appendChild(h);
+            
+            const anim = h.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: h.style.opacity },
+                { transform: `translateY(110vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], { duration: 5000 + Math.random() * 3000, easing: 'linear' });
+
+            anim.onfinish = () => h.remove();
+        }
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
