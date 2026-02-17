@@ -100,7 +100,6 @@
 
         p { line-height: 1.8; font-size: 1.2em; text-align: justify; margin-bottom: 25px; opacity: 0.9; }
 
-        /* Estilo da Seção de Distância */
         .distancia-container {
             margin: 40px 0;
             padding: 30px;
@@ -173,14 +172,16 @@
 
         <h1 id="titulo-digitado"></h1>
 
-        <p class="reveal">Sabe, às vezes eu me pego aqui no silêncio do quarto, com a luz meio baixa e o pensamento longe... e não adianta, ele sempre termina em você. É como se meu coração tivesse um GPS que só sabe marcar o caminho de volta pro teu abraço.</p>
+        <p class="reveal">Sabe, às vezes eu me pego aqui no silêncio do quarto, com a luz meio baixa e o pensamento longe... e não adianta, ele sempre termina em você. É como se meu coração tivesse um GPS que só sabe marcar o caminho de volta pro teu abraço. Eu fico aqui, olhando pro teto ou pra janela aberta, e percebo que o mundo lá fora pode estar fazendo o barulho que for, mas nada disso importa se eu não tiver a paz que só o seu sorriso me traz.</p>
 
         <div class="distancia-container reveal">
             <span class="km-numero">2.459 km</span>
             <span class="distancia-frase">
-                "Dizem que a distância separa corpos, mas eu descobri que ela apenas me deu a certeza de que meu coração não sabe viver longe do seu. Cada quilômetro é apenas um motivo a mais para eu te amar com mais força até o nosso próximo abraço."
+                "A distância é apenas um detalhe para quem tem o destino traçado."
             </span>
         </div>
+
+        <p class="reveal">Eu já tentei de tudo pra me distrair. Já vi todos os filmes, comecei séries novas, li páginas e páginas de livros... mas parece que tudo o que eu consumo me faz lembrar de algum detalhe nosso. É uma conexão que não envelhece, não cansa e não diminui. Pelo contrário, parece que quanto mais o tempo passa, mais eu entendo que você não é só uma escolha, você é a minha melhor decisão todos os dias.</p>
 
         <div class="galeria-dupla reveal">
             <div class="img-wrap" style="transform: rotate(3deg);" onclick="openLightbox(this)">
@@ -193,7 +194,7 @@
             </div>
         </div>
 
-        <p class="reveal">Eu percebo que o mundo lá fora pode estar fazendo o barulho que for, mas nada disso importa se eu não tiver a paz que só o seu sorriso me traz. A distância pode ser grande nos mapas, mas aqui dentro, você está em cada batida.</p>
+        <p class="reveal">Tem gente que busca o sentido da vida em coisas gigantes, em viagens ou em grandes conquistas. Eu encontrei o meu nas conversas bobas de madrugada, no jeito que você me olha e na segurança de saber que eu tenho você. É uma febre que não passa, um querer que só aumenta e uma certeza que transborda.</p>
 
         <div class="contador-box reveal">
             <div style="font-family: 'Dancing Script'; font-size: 1.8em; color: var(--cor-principal);">Nosso tempo de felicidade:</div>
@@ -213,7 +214,8 @@
             </button>
             <div id="textoFinal" style="display: none; margin-top: 30px;">
                 <p style="font-style: italic; color: var(--cor-principal); font-size: 1.4em; text-align: center; font-weight: bold; background: var(--cor-polaroid); padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                    "Eu te escolhi e te escolheria mil vezes, todos os dias, em todas as vidas. Você é a minha certeza mais bonita e sou eternamente grato por ter o privilégio de te amar." ❤️🫀
+                    "Para você, meu amor, eu entrego o meu melhor. Porque no fim das contas, a gente entende que a vida é feita de momentos, e os meus melhores momentos são todos ao seu lado. O mundo pode ser enorme e cheio de gente, mas pra mim, o resto? O resto tanto faz. O que é essencial, o que é real e o que me faz feliz, eu já tenho. Eu amo você, hoje e sempre eu te escolhi e te escolheria mil vezes, todos os dias, em todas as vidas. Você é a minha certeza mais bonita, e eu sou eternamente grato por ter o privilégio de te
+amar... ❤️🔒"
                 </p>
             </div>
         </div>
@@ -229,7 +231,6 @@
         const dataInic = new Date(2025, 5, 17);
         let playing = false;
 
-        // Lógica de Modo Noturno Automático
         function aplicarTema() {
             const hora = new Date().getHours();
             if (hora >= 18 || hora <= 6) {
